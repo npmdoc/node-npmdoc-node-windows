@@ -1,0 +1,937 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+    >node-windows (v0.1.14)</a>
+</h1>
+<h4>Support for Windows services, event logging, UAC, and several helper methods for interacting with the OS.</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-windows">module node-windows</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-windows.daemon">
+            function <span class="apidocSignatureSpan">node-windows.</span>daemon
+            <span class="apidocSignatureSpan">(config)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">node-windows.</span>binaries</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">node-windows.</span>cmd</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">node-windows.</span>winsw</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-windows.binaries">module node-windows.binaries</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-windows.binaries.elevate">
+            function <span class="apidocSignatureSpan">node-windows.binaries.</span>elevate
+            <span class="apidocSignatureSpan">(cmd, options, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-windows.binaries.sudo">
+            function <span class="apidocSignatureSpan">node-windows.binaries.</span>sudo
+            <span class="apidocSignatureSpan">(cmd, password, options, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-windows.cmd">module node-windows.cmd</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-windows.cmd.isAdminUser">
+            function <span class="apidocSignatureSpan">node-windows.cmd.</span>isAdminUser
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-windows.cmd.kill">
+            function <span class="apidocSignatureSpan">node-windows.cmd.</span>kill
+            <span class="apidocSignatureSpan">(pid, force, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-windows.cmd.list">
+            function <span class="apidocSignatureSpan">node-windows.cmd.</span>list
+            <span class="apidocSignatureSpan">(callback, verbose)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-windows.daemon">module node-windows.daemon</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-windows.daemon.daemon">
+            function <span class="apidocSignatureSpan">node-windows.</span>daemon
+            <span class="apidocSignatureSpan">(config)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-windows.daemon.super_">
+            function <span class="apidocSignatureSpan">node-windows.daemon.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-windows.winsw">module node-windows.winsw</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-windows.winsw.createExe">
+            function <span class="apidocSignatureSpan">node-windows.winsw.</span>createExe
+            <span class="apidocSignatureSpan">(name, dir, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-windows.winsw.generateXml">
+            function <span class="apidocSignatureSpan">node-windows.winsw.</span>generateXml
+            <span class="apidocSignatureSpan">(config)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-windows" id="apidoc.module.node-windows">module node-windows</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-windows.daemon" id="apidoc.element.node-windows.daemon">
+        function <span class="apidocSignatureSpan">node-windows.</span>daemon
+        <span class="apidocSignatureSpan">(config)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">daemon = function (config){
+
+<span class="apidocCodeCommentSpan">  /**
+   * @cfg {Array|Object} [env]
+   * An optional array or object used to pass environment variables to the node.js script.
+   * You can do this by setting environment variables in the service config, as shown below:
+   *
+   *     var svc = new Service({
+   *      name:&#x27;Hello World&#x27;,
+   *      description: &#x27;The nodejs.org example web server.&#x27;,
+   *      script: &#x27;C:\\path\\to\\helloworld.js&#x27;,
+   *      env: {
+   *        name: &#x22;NODE_ENV&#x22;,
+   *        value: &#x22;production&#x22;
+   *      }
+   *     });
+   *
+   * You can also supply an array to set multiple environment variables:
+   *
+   *     var svc = new Service({
+   *      name:&#x27;Hello World&#x27;,
+   *      description: &#x27;The nodejs.org example web server.&#x27;,
+   *      script: &#x27;C:\\path\\to\\helloworld.js&#x27;,
+   *      env: [{
+   *        name: &#x22;HOME&#x22;,
+   *        value: process.env[&#x22;USERPROFILE&#x22;] // Access the user home directory
+   *      },{
+   *        name: &#x22;NODE_ENV&#x22;,
+   *        value: &#x22;production&#x22;
+   *      }]
+   *     });
+   */
+</span>  Object.defineProperties(this,{
+    _name: {
+      enumerable: false,
+      writable: true,
+      configurable: false,
+      value: config.name || null
+    },
+
+    _eventlog:{
+      enumerable: false,
+      writable: true,
+      configurable: false,
+      value: null
+    },
+
+    _xml: {
+      enumerable: false,
+      get: function(){
+        var wrapperArgs = [
+          &#x27;--file&#x27;, this.script,
+          &#x27;--log&#x27;, this.name + &#x27; &#x27; + &#x27;wrapper&#x27;,
+          &#x27;--grow&#x27;, this.grow,
+          &#x27;--wait&#x27;, this.wait,
+          &#x27;--maxrestarts&#x27;, this.maxRestarts,
+          &#x27;--abortonerror&#x27;, (this.abortOnError==true?&#x27;y&#x27;:&#x27;n&#x27;),
+          &#x27;--stopparentfirst&#x27;, this.stopparentfirst
+        ];
+
+        if (this.maxRetries!==null)
+        {
+          wrapperArgs.push(&#x27;--maxretries&#x27;);
+          wrapperArgs.push(this.maxRetries);
+        }
+
+        return require(&#x27;./winsw&#x27;).generateXml({
+          name: this.name,
+          id: this._exe,
+          nodeOptions: this.nodeOptions,
+          script: wrapper,
+          wrapperArgs: wrapperArgs,
+          description: this.description,
+          logpath: this.logpath,
+          env: config.env,
+          logOnAs: this.logOnAs,
+          workingdirectory: this.workingdirectory,
+          stopparentfirst: this.stopparentfirst,
+          stoptimeout: this.stoptimeout
+        });
+      }
+    },
+
+    _exe: {
+      enumerable: false,
+      get: function(){
+        return this.id+&#x27;.exe&#x27;;
+      }
+    },
+
+    /**
+     * @cfg {Number} [maxRetries=null]
+     * The maximum number of restart attempts to make before the service is considered non-responsive/faulty.
+     * Ignored by default.
+     */
+    maxRetries: {
+      enumerable: true,
+      writable: false,
+      configurable: false,
+      value: config.maxRetries || null
+    },
+
+    /**
+     * @cfg {Boolean} [stopparentfirst=false]
+     * Allow the service to shutdown cleanly.
+     */
+    stopparentfirst: {
+      enumerable: true,
+      writable: false,
+      configurable: false,
+      value: config.stopparentfirst
+    },
+
+    /**
+     * @cfg {Number} [stoptimeout=30]
+     * How long to wait in seconds before force killing the application.
+     * This only takes effect when stopparentfirst is enabled.
+     */
+    stoptimeout: {
+      enumerable: true,
+      writable: false,
+      configurable: false,
+      value: config.stoptimeout || 30
+    },
+
+    /**
+     * @cfg {string} [nodeOptions=&#x27;--harmony&#x27;]
+     * Options to be passed to the node process.
+     */
+    nodeOptions: {
+      enumerable: true,
+      writable: false,
+      configurable: false,
+      value: config.nodeOptions || &#x27;--harmony&#x27;
+    },
+
+    /**
+     * @cfg {Number} [maxRestarts=3]
+     * The maximum number of restarts within a 60 second period before haulting the process.
+     * This cannot be _disabled_, but it can be rendered ineffective by setting a value of `0`.
+     */
+    maxRestarts: {
+      enumerable: true,
+      writable: false,
+      configurable: false,
+      value: config.maxRestarts || 3
+    },
+
+    /**
+     * @cfg {Boolean} [abortOnError=false]
+     * Setting this to `true` will ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-windows.binaries" id="apidoc.module.node-windows.binaries">module node-windows.binaries</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-windows.binaries.elevate" id="apidoc.element.node-windows.binaries.elevate">
+        function <span class="apidocSignatureSpan">node-windows.binaries.</span>elevate
+        <span class="apidocSignatureSpan">(cmd, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">elevate = function (cmd, options, callback) {
+  var p = params(options,callback);
+  exec(&#x27;&#x22;&#x27;+path.join(bin,&#x27;elevate&#x27;,&#x27;elevate.cmd&#x27;)+&#x27;&#x22; &#x27;+cmd,p.options,p.callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * @param {Function} callback
+ * @param {Boolean} callback.isAdmin
+ * Receives true/false as an argument to the callback.
+ */
+isAdminUser: function(callback){
+  exec(&#x27;NET SESSION&#x27;,function(err,so,se){
+    if (se.length !== 0){
+      bin.<span class="apidocCodeKeywordSpan">elevate</span>(&#x27;NET SESSION&#x27;,function(_err,_so,_se){
+        callback(_se.length === 0);
+      });
+    } else {
+      callback(true);
+    }
+  });
+},
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-windows.binaries.sudo" id="apidoc.element.node-windows.binaries.sudo">
+        function <span class="apidocSignatureSpan">node-windows.binaries.</span>sudo
+        <span class="apidocSignatureSpan">(cmd, password, options, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">sudo = function (cmd, password, options, callback){
+  password = password || &#x27;&#x27;;
+  if (typeof password !== &#x27;string&#x27;){
+    callback = options;
+    options = password;
+    password = &#x27;&#x27;;
+  }
+  var p = params(options,callback);
+  exec(path.join(bin,&#x27;sudowin&#x27;,&#x27;sudo.exe&#x27;)+&#x27; &#x27;+(password !== &#x27;&#x27; ? &#x27;-p &#x27;+password:&#x27;&#x27;)+cmd,p.options,p.callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  }
+  if (me.user.account !== null &#x26;&#x26; me.user.password !== null){
+    _cmd = &#x22;runas /profile /user:&#x22;+me.user.domain+&#x22;\\&#x22;+me.user.account+&#x22; &#x22;+cmd;
+    exec(cmd,options,callback);
+  } else if (me.sudo.password !== null){
+    // If the user is not an admin, but a sudo password is provided for admin,
+    // attempt to launch using sudo.
+    wincmd.<span class="apidocCodeKeywordSpan">sudo</span>(cmd,me.sudo.password||&#x27;&#x27;,options,callback);
+  } else {
+    wincmd.elevate(cmd,options,callback)
+  }
+} else {
+  console.log(PermError);
+  throw PermError;
+}
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-windows.cmd" id="apidoc.module.node-windows.cmd">module node-windows.cmd</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-windows.cmd.isAdminUser" id="apidoc.element.node-windows.cmd.isAdminUser">
+        function <span class="apidocSignatureSpan">node-windows.cmd.</span>isAdminUser
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isAdminUser = function (callback){
+  exec(&#x27;NET SESSION&#x27;,function(err,so,se){
+    if (se.length !== 0){
+      bin.elevate(&#x27;NET SESSION&#x27;,function(_err,_so,_se){
+        callback(_se.length === 0);
+      });
+    } else {
+      callback(true);
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+or `false` if it is not.
+
+**Example**
+
+```js
+var wincmd = require(&#x27;node-windows&#x27;);
+
+wincmd.<span class="apidocCodeKeywordSpan">isAdminUser</span>(function(isAdmin){
+  if (isAdmin) {
+    console.log(&#x27;The user has administrative privileges.&#x27;);
+  } else {
+    console.log(&#x27;NOT AN ADMIN&#x27;);
+  }
+});
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-windows.cmd.kill" id="apidoc.element.node-windows.cmd.kill">
+        function <span class="apidocSignatureSpan">node-windows.cmd.</span>kill
+        <span class="apidocSignatureSpan">(pid, force, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">kill = function (pid, force, callback){
+  if (!pid){
+    throw new Error(&#x27;PID is required for the kill operation.&#x27;);
+  }
+  callback = callback || function(){};
+  if (typeof force == &#x27;function&#x27;){
+    callback = force;
+    force = false;
+  }
+  exec(&#x22;taskkill /PID &#x22;+pid+(force==true?&#x27; /f&#x27;:&#x27;&#x27;),callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+This method will kill a process by `PID`.
+
+
+```js
+var wincmd = require(&#x27;node-windows&#x27;);
+
+wincmd.<span class="apidocCodeKeywordSpan">kill</span>(12345,function(){
+  console.log(&#x27;Process Killed&#x27;);
+});
+```
+
+In this example, process ID `12345` would be killed. It is important to note that the
+user account executing this node script may require administrative privileges.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-windows.cmd.list" id="apidoc.element.node-windows.cmd.list">
+        function <span class="apidocSignatureSpan">node-windows.cmd.</span>list
+        <span class="apidocSignatureSpan">(callback, verbose)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">list = function (callback, verbose){
+  verbose = typeof verbose == &#x27;boolean&#x27; ? verbose : false;
+  exec(&#x27;tasklist /FO CSV&#x27;+(verbose==true?&#x27; /V&#x27;:&#x27;&#x27;),function(err,stdout,stderr){
+    var p = stdout.split(&#x27;\r\n&#x27;);
+    var proc = [];
+    var head = null;
+    while (p.length &#x3e; 1){
+      var rec = p.shift();
+      rec = rec.replace(/\&#x22;\,/gi,&#x27;&#x22;;&#x27;).replace(/\&#x22;|\&#x27;/gi,&#x27;&#x27;).split(&#x27;;&#x27;);
+      if (head == null){
+        head = rec;
+        for (var i=0;i&#x3c;head.length;i++){
+          head[i] = head[i].replace(/ /gi,&#x27;&#x27;);
+        }
+      } else {
+        var tmp = {};
+        for (var i=0;i&#x3c;rec.length;i++){
+          tmp[head[i]] = rec[i].replace(/\&#x22;|\&#x27;/gi,&#x27;&#x27;);
+        }
+        proc.push(tmp);
+      }
+    }
+    callback(proc);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+## list
+
+The list method queries the operating system for a list of running processes.
+
+```js
+var wincmd = require(&#x27;node-windows&#x27;);
+
+wincmd.<span class="apidocCodeKeywordSpan">list</span>(function(svc){
+  console.log(svc);
+},true);
+```
+
+This returns an array of running processes. Supplying the optional `true`
+argument in the above example provides a list with verbose output. The output is
+specific to the version of the operating system. Here is an example of verbose
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-windows.daemon" id="apidoc.module.node-windows.daemon">module node-windows.daemon</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-windows.daemon.daemon" id="apidoc.element.node-windows.daemon.daemon">
+        function <span class="apidocSignatureSpan">node-windows.</span>daemon
+        <span class="apidocSignatureSpan">(config)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">daemon = function (config){
+
+<span class="apidocCodeCommentSpan">  /**
+   * @cfg {Array|Object} [env]
+   * An optional array or object used to pass environment variables to the node.js script.
+   * You can do this by setting environment variables in the service config, as shown below:
+   *
+   *     var svc = new Service({
+   *      name:&#x27;Hello World&#x27;,
+   *      description: &#x27;The nodejs.org example web server.&#x27;,
+   *      script: &#x27;C:\\path\\to\\helloworld.js&#x27;,
+   *      env: {
+   *        name: &#x22;NODE_ENV&#x22;,
+   *        value: &#x22;production&#x22;
+   *      }
+   *     });
+   *
+   * You can also supply an array to set multiple environment variables:
+   *
+   *     var svc = new Service({
+   *      name:&#x27;Hello World&#x27;,
+   *      description: &#x27;The nodejs.org example web server.&#x27;,
+   *      script: &#x27;C:\\path\\to\\helloworld.js&#x27;,
+   *      env: [{
+   *        name: &#x22;HOME&#x22;,
+   *        value: process.env[&#x22;USERPROFILE&#x22;] // Access the user home directory
+   *      },{
+   *        name: &#x22;NODE_ENV&#x22;,
+   *        value: &#x22;production&#x22;
+   *      }]
+   *     });
+   */
+</span>  Object.defineProperties(this,{
+    _name: {
+      enumerable: false,
+      writable: true,
+      configurable: false,
+      value: config.name || null
+    },
+
+    _eventlog:{
+      enumerable: false,
+      writable: true,
+      configurable: false,
+      value: null
+    },
+
+    _xml: {
+      enumerable: false,
+      get: function(){
+        var wrapperArgs = [
+          &#x27;--file&#x27;, this.script,
+          &#x27;--log&#x27;, this.name + &#x27; &#x27; + &#x27;wrapper&#x27;,
+          &#x27;--grow&#x27;, this.grow,
+          &#x27;--wait&#x27;, this.wait,
+          &#x27;--maxrestarts&#x27;, this.maxRestarts,
+          &#x27;--abortonerror&#x27;, (this.abortOnError==true?&#x27;y&#x27;:&#x27;n&#x27;),
+          &#x27;--stopparentfirst&#x27;, this.stopparentfirst
+        ];
+
+        if (this.maxRetries!==null)
+        {
+          wrapperArgs.push(&#x27;--maxretries&#x27;);
+          wrapperArgs.push(this.maxRetries);
+        }
+
+        return require(&#x27;./winsw&#x27;).generateXml({
+          name: this.name,
+          id: this._exe,
+          nodeOptions: this.nodeOptions,
+          script: wrapper,
+          wrapperArgs: wrapperArgs,
+          description: this.description,
+          logpath: this.logpath,
+          env: config.env,
+          logOnAs: this.logOnAs,
+          workingdirectory: this.workingdirectory,
+          stopparentfirst: this.stopparentfirst,
+          stoptimeout: this.stoptimeout
+        });
+      }
+    },
+
+    _exe: {
+      enumerable: false,
+      get: function(){
+        return this.id+&#x27;.exe&#x27;;
+      }
+    },
+
+    /**
+     * @cfg {Number} [maxRetries=null]
+     * The maximum number of restart attempts to make before the service is considered non-responsive/faulty.
+     * Ignored by default.
+     */
+    maxRetries: {
+      enumerable: true,
+      writable: false,
+      configurable: false,
+      value: config.maxRetries || null
+    },
+
+    /**
+     * @cfg {Boolean} [stopparentfirst=false]
+     * Allow the service to shutdown cleanly.
+     */
+    stopparentfirst: {
+      enumerable: true,
+      writable: false,
+      configurable: false,
+      value: config.stopparentfirst
+    },
+
+    /**
+     * @cfg {Number} [stoptimeout=30]
+     * How long to wait in seconds before force killing the application.
+     * This only takes effect when stopparentfirst is enabled.
+     */
+    stoptimeout: {
+      enumerable: true,
+      writable: false,
+      configurable: false,
+      value: config.stoptimeout || 30
+    },
+
+    /**
+     * @cfg {string} [nodeOptions=&#x27;--harmony&#x27;]
+     * Options to be passed to the node process.
+     */
+    nodeOptions: {
+      enumerable: true,
+      writable: false,
+      configurable: false,
+      value: config.nodeOptions || &#x27;--harmony&#x27;
+    },
+
+    /**
+     * @cfg {Number} [maxRestarts=3]
+     * The maximum number of restarts within a 60 second period before haulting the process.
+     * This cannot be _disabled_, but it can be rendered ineffective by setting a value of `0`.
+     */
+    maxRestarts: {
+      enumerable: true,
+      writable: false,
+      configurable: false,
+      value: config.maxRestarts || 3
+    },
+
+    /**
+     * @cfg {Boolean} [abortOnError=false]
+     * Setting this to `true` will ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-windows.daemon.super_" id="apidoc.element.node-windows.daemon.super_">
+        function <span class="apidocSignatureSpan">node-windows.daemon.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function EventEmitter() {
+  EventEmitter.init.call(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-windows.winsw" id="apidoc.module.node-windows.winsw">module node-windows.winsw</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-windows.winsw.createExe" id="apidoc.element.node-windows.winsw.createExe">
+        function <span class="apidocSignatureSpan">node-windows.winsw.</span>createExe
+        <span class="apidocSignatureSpan">(name, dir, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">createExe = function (name, dir, callback) {
+  var fs = require(&#x27;fs&#x27;), p = require(&#x27;path&#x27;);
+
+  if (typeof dir === &#x27;function&#x27;) {
+    callback = dir;
+    dir = null;
+  }
+
+  dir = dir || process.cwd();
+
+  var exeOrigin = p.join(__dirname,&#x27;..&#x27;,&#x27;bin&#x27;,&#x27;winsw&#x27;,&#x27;winsw.exe&#x27;),
+      cfgOrigin = p.join(__dirname,&#x27;..&#x27;,&#x27;bin&#x27;,&#x27;winsw&#x27;,&#x27;winsw.exe.config&#x27;),
+      exeDest = p.join(dir,name.replace(/[^\w]/gi,&#x27;&#x27;).toLowerCase()+&#x27;.exe&#x27;),
+      cfgDest = p.join(dir,name.replace(/[^\w]/gi,&#x27;&#x27;).toLowerCase()+&#x27;.exe.config&#x27;),
+      exeData = fs.readFileSync(exeOrigin,{encoding:&#x27;binary&#x27;}),
+      cfgData = fs.readFileSync(cfgOrigin,{encoding:&#x27;binary&#x27;});
+
+  fs.writeFileSync(exeDest,exeData,{encoding:&#x27;binary&#x27;});
+  fs.writeFileSync(cfgDest,cfgData,{encoding:&#x27;binary&#x27;});
+  callback &#x26;&#x26; callback();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+fs.exists(dir,function(exists){
+  if (!exists){
+    fs.mkdirSync(dir);
+  }
+  // Write the configuration file
+  fs.writeFile(path.resolve(dir,me.id+&#x27;.xml&#x27;),me._xml,function(){
+    // Write the exe file
+    winsw.<span class="apidocCodeKeywordSpan">createExe</span>(me.id,dir,function(){
+      me.execute(&#x27;&#x22;&#x27;+path.resolve(dir,me._exe)+&#x27;&#x22; install&#x27;,function(){
+        sleep(2);
+        me.emit(&#x27;install&#x27;);
+      });
+    });
+  });
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-windows.winsw.generateXml" id="apidoc.element.node-windows.winsw.generateXml">
+        function <span class="apidocSignatureSpan">node-windows.winsw.</span>generateXml
+        <span class="apidocSignatureSpan">(config)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">generateXml = function (config)
+{
+  var xml;
+
+  // add multiple &#x22;tag&#x22; items to the xml
+  // if input is an array, add each element of the array, if it&#x27;s a string,
+  // split it around splitter and add each one
+  // if input is null or undefined do nothing
+  function multi(tag, input, splitter)
+  {
+    // do nothing if no input
+    if (input===undefined || input===null) {
+      return;
+    }
+
+    if (!(input instanceof Array)) {
+      input = input.split(splitter||&#x27;,&#x27;);
+    }
+    input.forEach(function(val) {
+      var ele={};
+      ele[tag]=String(val).trim();
+      xml.push(ele);
+    });
+  }
+
+  // Make sure required configuration items are present
+  if (!config || !config.id || !config.name || !config.script)
+  {
+    throw &#x22;WINSW must be configured with a minimum of id, name and script&#x22;;
+  }
+
+  // create json template of xml
+  // only the portion of the xml inside the top level &#x27;service&#x27; tag
+  xml = [
+    {id: config.id},
+    {name: config.name},
+    {description: config.description||&#x27;&#x27;},
+    {executable: process.execPath},
+    {logmode: config.logmode||&#x27;rotate&#x27;}
+  ];
+
+  multi(&#x27;argument&#x27;,config.nodeOptions, &#x27; &#x27;);
+  xml.push({argument:config.script.trim()});
+  multi(&#x27;argument&#x27;,config.wrapperArgs,&#x27; &#x27;);
+
+
+  // Optionally add log path
+  if (config.logpath) {
+    xml.push({logpath : config.logpath});
+  }
+
+  // Optionally add stopparentprocessfirst
+  if (config.stopparentfirst) {
+    xml.push({stopparentprocessfirst: config.stopparentfirst});
+  }
+
+  // Optionally set the stoptimeout
+  if (config.stoptimeout) {
+    xml.push({stoptimeout: config.stoptimeout + &#x27;sec&#x27;});
+  }
+
+  // Optionally add service dependencies
+  multi(&#x27;depend&#x27;,config.dependencies);
+
+  // Optionally add environment values
+  if (config.env) {
+    config.env = (config.env instanceof Array == true) ?
+      config.env : [config.env];
+    config.env.forEach(function(env){
+      xml.push({env: {_attr: {name:env.name, value:env.value}}});
+    });
+  }
+
+  // optionally set the service logon credentials
+  if (config.logOnAs &#x26;&#x26; config.logOnAs.account &#x26;&#x26; config.logOnAs.password &#x26;&#x26;
+    config.logOnAs.domain)
+  {
+    xml.push({
+      serviceaccount: [
+        {domain: config.logOnAs.domain},
+        {user: config.logOnAs.account},
+        {password: config.logOnAs.password}
+      ]
+    });
+  }
+
+  // if no working directory specified, use current working directory
+  // that this process was launched with
+  xml.push({workingdirectory: config.workingdirectory || process.cwd()});
+
+  // indent resultant xml with tabs, and use windows newlines for extra readability
+  return require(&#x27;xml&#x27;)({service:xml}, {indent: &#x27;\t&#x27;}).replace(/\n/g,&#x27;\r\n&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+if (this.maxRetries!==null)
+{
+  wrapperArgs.push(&#x27;--maxretries&#x27;);
+  wrapperArgs.push(this.maxRetries);
+}
+
+return require(&#x27;./winsw&#x27;).<span class="apidocCodeKeywordSpan">generateXml</span>({
+  name: this.name,
+  id: this._exe,
+  nodeOptions: this.nodeOptions,
+  script: wrapper,
+  wrapperArgs: wrapperArgs,
+  description: this.description,
+  logpath: this.logpath,
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
